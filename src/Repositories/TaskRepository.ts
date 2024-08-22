@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../PrismaService';
 import { Prisma } from '@prisma/client';
+import SaveTaskDto from 'src/UseCase/SaveTask/SaveTaskDto';
 
 @Injectable()
 export default class TaskRepository {
@@ -26,6 +27,17 @@ export default class TaskRepository {
     });
   }
 
+  async update(task: SaveTaskDto) {
+    return this.prisma.task.update({
+      where: {
+        id: task.id,
+      },
+      data: {
+        name: task.name,
+      },
+    });
+  }
+
   async create(name: string) {
     return this.prisma.task.create({
       data: {
@@ -41,8 +53,9 @@ export default class TaskRepository {
   ) {
     if (!data.id) {
       // @todo IMPLEMENT HERE USING PRISMA API
+      return this.create(data.name as string);
     }
-
     // @todo IMPLEMENT HERE USING PRISMA API
+    return this.update(data as SaveTaskDto);
   }
 }

@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
 } from '@nestjs/common';
@@ -11,7 +12,7 @@ import DeleteTask from '../UseCase/DeleteTask/DeleteTask';
 import GetAllTasksUseCase from '../UseCase/GetAllTasks/GetAllTasksUseCase';
 import SaveTaskDto from '../UseCase/SaveTask/SaveTaskDto';
 import UseCaseFactory from '../UseCase/UseCaseFactory';
-import CreateTaskUseCase from 'src/UseCase/CreateTask/CreateTaskUseCase';
+import SaveTaskUseCase from 'src/UseCase/SaveTask/SaveTaskUseCase';
 
 @Controller()
 export default class TaskController {
@@ -25,12 +26,19 @@ export default class TaskController {
   @Post('/tasks')
   async create(@Body() dto: SaveTaskDto) {
     // @todo YOU MUST FOLLOW THE SAME IMPLEMENTATION AS OTHER ENDPOINTS
-    return (await this.useCaseFactory.create(CreateTaskUseCase)).handle(dto);
+    return (await this.useCaseFactory.create(SaveTaskUseCase)).handle(dto);
   }
 
   @Patch('/tasks/:id')
-  async update(@Body() dto: SaveTaskDto) {
+  async update(
+    @Body() dto: SaveTaskDto,
+    @Param('id', ParseIntPipe) id: number,
+  ) {
     // @todo YOU MUST FOLLOW THE SAME IMPLEMENTATION AS OTHER ENDPOINTS
+    return (await this.useCaseFactory.create(SaveTaskUseCase)).handle({
+      ...dto,
+      id,
+    });
   }
 
   @Delete('/tasks/:id')
