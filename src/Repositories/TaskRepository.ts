@@ -26,6 +26,14 @@ export default class TaskRepository {
     });
   }
 
+  async create(name: string) {
+    return this.prisma.task.create({
+      data: {
+        name,
+      },
+    });
+  }
+
   async save(
     data:
       | Prisma.XOR<Prisma.TaskCreateInput, Prisma.TaskUncheckedCreateInput>
