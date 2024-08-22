@@ -1,73 +1,59 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Todo List Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Introduction
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This repository contains all the backend code of the project.
+You can watch a video demonstration of the application here: [Video Link](https://youtu.be/5ejrRWrmp8w).
 
-## Description
+## Technology Stack
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS**: Is a backend framework used in this project. 
+- **Prisma**: Is a ORM, that help with the database interaction.
+- **PostgreSQL**: The database used.
 
-## Installation
+## Features
 
-```bash
-$ yarn install
-```
+- **CRUD Operations**:
+- **Task Management**: 
+- **Database Integration**: 
 
-## Running the app
+## How I Did It 
 
-```bash
-# development
-$ yarn run start
+I followed the basic project structure, using the concept of use cases to keep my code organized. I created the two endpoints needed for creating and updating a resource. Initially, I made a CreateUseCase for creating a resource, but in the end, I combined everything into a single SaveTaskUseCase, which was cleaner. I also used the class-validator library to control and validate the data.
 
-# watch mode
-$ yarn run start:dev
 
-# production mode
-$ yarn run start:prod
-```
+## Setup and Installation
 
-## Test
+### Steps
 
-```bash
-# unit tests
-$ yarn run test
+1. **Clone the Repository**
 
-# e2e tests
-$ yarn run test:e2e
+   ```bash
+   git clone <repository-url>
+   cd <repository>
 
-# test coverage
-$ yarn run test:cov
-```
+2. **Install dependencies**
 
-## Support
+   ```bash
+   yarn install
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2. **Setup the database**
 
-## Stay in touch
+  - Check the .env file for the database credentials.
+  And use the commands :
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+   ```bash
+   yarn run prisma:generate
+   
+   yarn run prisma:migrate:run
 
-## License
+   yarn run prisma:seed
+   ```
 
-Nest is [MIT licensed](LICENSE).
+3. **Run the api**
+
+  ```bash
+  yarn run start:dev
+  ```
+
+
