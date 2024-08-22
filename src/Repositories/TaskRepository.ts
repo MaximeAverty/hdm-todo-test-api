@@ -53,9 +53,13 @@ export default class TaskRepository {
   ) {
     if (!data.id) {
       // @todo IMPLEMENT HERE USING PRISMA API
-      return this.create(data.name as string);
+      return await this.create(data.name as string);
     }
     // @todo IMPLEMENT HERE USING PRISMA API
+    const taskToUpdate = await this.findOne(data.id as number);
+    if (taskToUpdate.name === data.name) {
+      throw new Error('Failed to updated task');
+    }
     return this.update(data as SaveTaskDto);
   }
 }
