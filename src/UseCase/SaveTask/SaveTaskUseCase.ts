@@ -4,7 +4,9 @@ import { UseCase } from '../../index';
 import SaveTaskDto from './SaveTaskDto';
 
 @Injectable()
-export default class SaveTaskUseCase implements UseCase<Promise<Task>, [dto: SaveTaskDto]> {
+export default class SaveTaskUseCase
+  implements UseCase<Promise<Task>, [dto: SaveTaskDto]>
+{
   constructor() {}
 
   async handle(dto: SaveTaskDto) {

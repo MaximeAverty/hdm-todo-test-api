@@ -6,7 +6,11 @@ import TaskRepository from './Repositories/TaskRepository';
 import UseCaseFactory from './UseCase/UseCaseFactory';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+  ],
   controllers: [TaskController],
   providers: [PrismaService, TaskRepository, UseCaseFactory],
 })

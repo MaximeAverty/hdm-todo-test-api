@@ -10,8 +10,11 @@ export default class DeleteTask
 
   async handle(id: number) {
     try {
+      const taskExists = await this.taskRepository.findOne(id);
+      if (!taskExists) {
+        throw new BadRequestException('Task not found');
+      }
       await this.taskRepository.delete(id);
-
       return true;
     } catch (error) {
       throw new BadRequestException(error.message);
